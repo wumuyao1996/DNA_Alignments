@@ -1,0 +1,5 @@
+>p1seq1
+TGCAA
+
+>p1seq2
+TCAT
