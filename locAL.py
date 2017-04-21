@@ -3,13 +3,13 @@
 
 # 
 
-# In[18]:
+# In[76]:
 
 #python locAL.py <seq file> -m <match> -s <mismatch> -d <indel> -a
 
 import sys, getopt, numpy
 
-arguments = ["locAL", "testseqs.txt", "-m", "1", "-s","-10", "-d", "-1", "-a"]
+arguments = ["locAL", "testseqs.txt", "-m", "1", "-s","-1", "-d", "-1", "-a"]
 
 
 file = arguments[1]
@@ -30,7 +30,7 @@ print ('indel:', str(indel))
 print ('findA:', str(findA))
 
 
-# In[19]:
+# In[77]:
 
 data = open(file, "r")
 
@@ -58,19 +58,24 @@ print ('seq1', seq1)
 print ('seq2', seq2)
 
 
-# In[28]:
+# In[ ]:
+
+
+
+
+# In[78]:
 
 #to find the max score
 
 #initialize all them
 
 #vert = insertion
-vert = numpy.empty((len(seq1)+1, len(seq2)+1))
-vert[:] = numpy.NAN
+vert = numpy.empty((len(seq2)+1, len(seq1)+1))
+vert[:] = 0
 
 d = 1
 while d < len(vert):
-	vert[d][0] = mismatchScore-d+1
+	vert[d][0] = indel-d+1
 	d+=1
 
 d=1
@@ -82,34 +87,34 @@ vert [0][0] = 0
 
 
 #hori = deletion
-hori = numpy.empty((len(seq1)+1, len(seq2)+1))
-hori[:] = numpy.NAN
+hori = numpy.empty((len(seq2)+1, len(seq1)+1))
+hori[:] = 0
 d=1
 while d < len(hori[0]):
-	hori[0][d] = mismatchScore-d+1
+	hori[0][d] = indel-d+1
 	d+=1
     
 d=1
-while d < len(hori[0]):
+while d < len(hori):
 	hori[d][0] = -float("inf")
 	d+=1
 hori[0][0]=0
 
 #diag = match or mismatch
-diag = numpy.empty((len(seq1)+1, len(seq2)+1))
-diag[:] = numpy.NAN
+diag = numpy.empty((len(seq2)+1, len(seq1)+1))
+diag[:] = 0
 d=1
 while d < len(diag[0]):
-	diag[0][d] = mismatchScore-d+1
+	diag[0][d] = indel-d+1
 	d+=1
 d=1
-while d < len(diag[0]):
-	diag[d][0] = mismatchScore-d+1
+while d < len(diag):
+	diag[d][0] = indel-d+1
 	d+=1
 diag [0][0] = 0
 
 #score for scorekeeping
-score = numpy.empty((len(seq1)+1, len(seq2)+1))
+score = numpy.empty((len(seq2)+1, len(seq1)+1))
 score[:] = numpy.NAN
 
 d=1
@@ -117,19 +122,20 @@ while d < len(score[0]):
 	score[0][d] = 0
 	d+=1
 d=1
-while d < len(score[0]):
+while d < len(score):
 	score[d][0] = 0
 	d+=1
 score [0][0] = 0
 
 #1 = Vert, 2 = Horiz, 3 = diag
-directional = numpy.empty((len(seq1)+1, len(seq2)+1))
+
+dire = numpy.empty((len(seq2)+1, len(seq1)+1))
 d=1
 while d < len(dire[0]):
 	dire[0][d] = 2
 	d+=1
 d=1
-while d < len(dire[0]):
+while d < len(dire):
 	dire[d][0] = 1
 	d+=1
 print ("Vertical")
@@ -147,9 +153,90 @@ print (score)
 print ("Direction")
 print (dire)
 
+
+x3 = numpy.empty((3, 2))
+print (x3.shape)
+print (x3)
+
 #run the script until we good
 
 
+# In[82]:
+
+#here we going to loop through the whole thing and go from top left to bottom right
+
+
+
+# we want to iterate 1-10 in the 3 matrices.
+i = 1
+while i < len(diag):
+    j=1
+    while j < len(diag[i]):
+        #print ('current i and j: ', i , ' ', j)
+        #we gotta manipulate each matrix we're working with
+        
+        #Vertical
+        a = vert[i-1][j]
+        b = diag[i-1][j]
+        
+        if a>=b:
+            vert[i][j] = a + mismatchScore
+        elif b>=a:
+            vert[i][j] = b + mismatchScore
+        
+        
+        #Horizontal
+        a = hori[i][j-1]
+        b = diag[i][j-1]
+        
+        if a>=b:
+            hori[i][j] = a + mismatchScore
+        elif b>=a:
+            hori[i][j] = b + mismatchScore
+        #diag
+        
+        a = vert[i][j]
+        b = hori[i][j]
+        
+        print((seq1[j-1],seq2[i-1]))
+        
+        if(int(seq1[j-1]==seq2[i-1]) ==0):
+            cScore = mismatchScore
+        else:
+            cScore = matchScore
+
+        c = diag[i-1][j-1] + cScore
+        
+        if a>=b and a>=c:
+            dire[i][j] = "1"
+            print("a")
+            diag[i][j]=a
+        elif b>=a and b>=c:
+            dire[i][j] = "2"
+            print("b")
+            diag[i][j]=b
+        elif c>=a and c>=b:
+            dire[i][j] = "3"
+            print("c")
+            diag[i][j]=c 
+            
+        j+=1
+
+    i+=1
+
+print('vertical: ')
+print(vert)
+print('horizontal: ')
+print(hori)
+print('diagonal: ')
+print(diag)
+
+print('Directional: ')
+print(dire)
+
+      
+
+
 # In[ ]:
 
 
@@ -157,9 +244,5 @@ print (dire)
 
 # In[ ]:
 
-
-
-
-# In[ ]:
 
 
