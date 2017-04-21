@@ -161,7 +161,7 @@ print (x3)
 #run the script until we good
 
 
-# In[82]:
+# In[83]:
 
 #here we going to loop through the whole thing and go from top left to bottom right
 
@@ -211,11 +211,11 @@ while i < len(diag):
             dire[i][j] = "1"
             print("a")
             diag[i][j]=a
-        elif b>=a and b>=c:
+        if b>=a and b>=c:
             dire[i][j] = "2"
             print("b")
             diag[i][j]=b
-        elif c>=a and c>=b:
+        if c>=a and c>=b:
             dire[i][j] = "3"
             print("c")
             diag[i][j]=c 
