@@ -3,7 +3,7 @@
 
 # 
 
-# In[2]:
+# In[57]:
 
 #python locAL.py <seq file> -m <match> -s <mismatch> -d <indel> -a
 
@@ -30,7 +30,7 @@ print ('indel:', str(indel))
 print ('findA:', str(findA))
 
 
-# In[3]:
+# In[58]:
 
 data = open(file, "r")
 
@@ -63,7 +63,7 @@ print ('seq2', seq2)
 
 
 
-# In[13]:
+# In[59]:
 
 #to find the max score
 
@@ -162,7 +162,7 @@ print (x3)
 #run the script until we good
 
 
-# In[50]:
+# In[60]:
 
 # here we going to loop through the whole thing and go from top left to bottom right
 
@@ -246,7 +246,8 @@ print('best: ', maxScore)
 print(bestLoc)
 
 
-# In[51]:
+# In[68]:
+
 
 #reset directional borders to zero:
 d=1
@@ -262,22 +263,21 @@ while d < len(dire):
 # let's write a function to find the local alignment
 
 
+ali1 = "" 
+print(seq1)
+print(seq1[bestLoc[1]-1])
+
+#remember seq2 is the y value but is presented first in the coordinates
 ali2 = ""
 print(seq2)
 print(seq2[bestLoc[0]-1])
 
-
-ali1 = ""
-print(seq1)
-print(seq1[bestLoc[1]-1])
 
 
 
 k = 0
 current = bestLoc
 while k == 0:
-    ali1 = ali1 + str(seq2[bestLoc[0]])
-    ali2 = ali2 + str(seq1[bestLoc[1]])
     print ("currentLoc: ", bestLoc, " currentDire ",dire[bestLoc])
     
     #on zero we stop
@@ -286,16 +286,23 @@ while k == 0:
     #on 1 we go up. so i changes but j stays the same
     elif dire[bestLoc] == 1:
         bestLoc = (bestLoc[0]-1, bestLoc[1])
+        ali1 = ali1 + "-"
+        ali2 = ali2 + str(seq2[bestLoc[0]])
     #on 2 we go left so j changes but i stays constant
     elif dire[bestLoc] == 2:
         bestLoc = (bestLoc[0], bestLoc[1]-1)
+        ali2 = ali2 + "-"
+        ali1 = ali1 = ali1 + str(seq1[bestLoc[1]])
     #on 3 both change, yay!
     elif dire[bestLoc] == 3:
         bestLoc = (bestLoc[0]-1, bestLoc[1]-1)
+        ali1 = ali1 + str(seq1[bestLoc[1]])
+        ali2 = ali2 + str(seq2[bestLoc[0]])
 
 print(dire)
-print (ali2)
+
 print (ali1)
+print (ali2)
 
 
 # In[ ]:
