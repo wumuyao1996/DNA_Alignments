@@ -3,13 +3,14 @@
 
 # 
 
-# In[57]:
+# In[145]:
 
 #python locAL.py <seq file> -m <match> -s <mismatch> -d <indel> -a
+#python locAL.py testseqs.txt -m +1 -s -1 -d -1 -a
 
 import sys, getopt, numpy
 
-arguments = ["locAL", "testseqs.txt", "-m", "1", "-s","-1", "-d", "-1", "-a"]
+arguments = ["locAL", "p1seqs.txt", "-m", "1", "-s","-10", "-d", "-1", "-a"]
 
 
 file = arguments[1]
@@ -30,7 +31,7 @@ print ('indel:', str(indel))
 print ('findA:', str(findA))
 
 
-# In[58]:
+# In[146]:
 
 data = open(file, "r")
 
@@ -63,7 +64,7 @@ print ('seq2', seq2)
 
 
 
-# In[59]:
+# In[147]:
 
 #to find the max score
 
@@ -162,7 +163,7 @@ print (x3)
 #run the script until we good
 
 
-# In[60]:
+# In[155]:
 
 # here we going to loop through the whole thing and go from top left to bottom right
 
@@ -196,7 +197,13 @@ while i < len(diag):
             hori[i][j] = a + mismatchScore
         elif b>=a:
             hori[i][j] = b + mismatchScore
+
         #diag
+        
+        if hori[i][j] < 0:
+            hori[i][j] = 0
+        if vert[i][j] < 0:
+            vert[i][j] = 0
         
         a = vert[i][j]
         b = hori[i][j]
@@ -222,6 +229,7 @@ while i < len(diag):
             diag[i][j]=c 
         if diag[i][j]<0:
             dire[i][j] = 0
+            diag[i][j] = 0
         
         if(diag[i][j] >= maxScore):
             maxScore = diag[i][j]
@@ -246,9 +254,9 @@ print('best: ', maxScore)
 print(bestLoc)
 
 
-# In[68]:
+# In[156]:
 
-
+# run this if -a is on
 #reset directional borders to zero:
 d=1
 while d < len(dire[0]):
@@ -278,10 +286,11 @@ print(seq2[bestLoc[0]-1])
 k = 0
 current = bestLoc
 while k == 0:
-    print ("currentLoc: ", bestLoc, " currentDire ",dire[bestLoc])
+    #\print ("currentLoc: ", bestLoc, " currentDire ",dire[bestLoc])
     
     #on zero we stop
     if dire[bestLoc] == 0:
+        print("stopped at: ", bestLoc)
         k=1
     #on 1 we go up. so i changes but j stays the same
     elif dire[bestLoc] == 1:
@@ -301,8 +310,8 @@ while k == 0:
 
 print(dire)
 
-print (ali1)
-print (ali2)
+print (ali1[::-1])
+print (ali2[::-1])
 
 
 # In[ ]:
