@@ -11751,25 +11751,21 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>p1seq1
-AGCCCACAATATAGCTAAACATCGCCACTAGTCCTAAAACCACTCCGCAGAAAAAGAATAAGGCCAAAACACGACTAAAATCGAAAGACATGACAAGTA</p>
-<p>p1seq2
-AGTAAGGCTGCAGCAAACCAGAAACCATCCTAAAAGAAGGAAAGCAAATAGGAGAACAAAACAATAATCAAAGCGATATAAAGGAGAAACATAACAACC</p>
-</blockquote>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#python locAL.py &lt;seq file&gt; -m &lt;match&gt; -s &lt;mismatch&gt; -d &lt;indel&gt; -a</span>
+<span class="c1">#python locAL.py testseqs.txt -m +1 -s -1 -d -1 -a</span>
 
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">getopt</span><span class="o">,</span> <span class="nn">numpy</span>
 
-<span class="n">arguments</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;locAL&quot;</span><span class="p">,</span> <span class="s2">&quot;testseqs.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;-s&quot;</span><span class="p">,</span><span class="s2">&quot;-10&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;-a&quot;</span><span class="p">]</span>
+<span class="n">arguments</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;locAL&quot;</span><span class="p">,</span> <span class="s2">&quot;testseqs.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;-s&quot;</span><span class="p">,</span><span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span> <span class="s2">&quot;-a&quot;</span><span class="p">]</span>
 
 
 <span class="n">file</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -11777,7 +11773,7 @@ AGTAAGGCTGCAGCAAACCAGAAACCATCCTAAAAGAAGGAAAGCAAATAGGAGAACAAAACAATAATCAAAGCGATATA
 <span class="n">mismatchScore</span> <span class="o">=</span>  <span class="nb">int</span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 <span class="n">indel</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
 <span class="n">findA</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="k">if</span> <span class="s1">&#39;-a&#39;</span> <span class="ow">in</span> <span class="n">arguments</span><span class="p">:</span>
+<span class="k">if</span> <span class="s1">&#39;-a&#39;</span> <span class="ow">in</span> <span class="n">arguments</span><span class="p">:</span> 
 	<span class="n">findA</span> <span class="o">=</span> <span class="kc">True</span>
 	<span class="c1">#print(&#39;found -a&#39;)</span>
 
@@ -11801,10 +11797,10 @@ AGTAAGGCTGCAGCAAACCAGAAACCATCCTAAAAGAAGGAAAGCAAATAGGAGAACAAAACAATAATCAAAGCGATATA
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Number of arguments: 9 arguments.
-Argument List: [&#39;locAL&#39;, &#39;testseqs.txt&#39;, &#39;-m&#39;, &#39;1&#39;, &#39;-s&#39;, &#39;-10&#39;, &#39;-d&#39;, &#39;-1&#39;, &#39;-a&#39;]
+Argument List: [&#39;locAL&#39;, &#39;testseqs.txt&#39;, &#39;-m&#39;, &#39;1&#39;, &#39;-s&#39;, &#39;-1&#39;, &#39;-d&#39;, &#39;-1&#39;, &#39;-a&#39;]
 file: testseqs.txt
 matchScore: 1
-mismatchScore: -10
+mismatchScore: -1
 indel: -1
 findA: True
 </pre>
@@ -11817,7 +11813,7 @@ findA: True
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
@@ -11856,8 +11852,8 @@ findA: True
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>seq1 [&#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;C&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;]
-seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;]
+<pre>seq1 [&#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;]
+seq2 [&#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;]
 </pre>
 </div>
 </div>
@@ -11868,7 +11864,20 @@ seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#to find the max score</span>
@@ -11876,12 +11885,12 @@ seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#3
 <span class="c1">#initialize all them</span>
 
 <span class="c1">#vert = insertion</span>
-<span class="n">vert</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">vert</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NAN</span>
+<span class="n">vert</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">vert</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">vert</span><span class="p">):</span>
-	<span class="n">vert</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">mismatchScore</span><span class="o">-</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span>
+	<span class="n">vert</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">indel</span><span class="o">-</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span>
 	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
 
 <span class="n">d</span><span class="o">=</span><span class="mi">1</span>
@@ -11893,27 +11902,77 @@ seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#3
 
 
 <span class="c1">#hori = deletion</span>
-<span class="n">hori</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">hori</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NAN</span>
+<span class="n">hori</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">hori</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">d</span><span class="o">=</span><span class="mi">1</span>
 <span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">hori</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-	<span class="n">hori</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">mismatchScore</span><span class="o">-</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span>
+	<span class="n">hori</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">indel</span><span class="o">-</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span>
 	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+    
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">hori</span><span class="p">):</span>
+	<span class="n">hori</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">hori</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
 
 <span class="c1">#diag = match or mismatch</span>
-<span class="n">diag</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">diag</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NAN</span>
-
+<span class="n">diag</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">diag</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">diag</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+	<span class="n">diag</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">indel</span><span class="o">-</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">diag</span><span class="p">):</span>
+	<span class="n">diag</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">indel</span><span class="o">-</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">diag</span> <span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="c1">#score for scorekeeping</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">score</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NAN</span>
 
-<span class="c1">#1 = Vert, 2 = Horiz, 3 = diag</span>
-<span class="n">directional</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+	<span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+	<span class="n">score</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">score</span> <span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">vert</span><span class="p">))</span>
+<span class="c1">#1 = Vert, 2 = Horiz, 3 = diag</span>
+
+<span class="n">dire</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dire</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+	<span class="n">dire</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dire</span><span class="p">):</span>
+	<span class="n">dire</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+    
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Vertical&quot;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">vert</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Horizontal&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">hori</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Diagonal&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">diag</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Direction&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">dire</span><span class="p">)</span>
+
+
+<span class="n">x3</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x3</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x3</span><span class="p">)</span>
 
 <span class="c1">#run the script until we good</span>
 </pre></div>
@@ -11928,14 +11987,40 @@ seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#3
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>(100, 100)
-[[   0.  -inf  -inf ...,  -inf  -inf  -inf]
- [ -10.   nan   nan ...,   nan   nan   nan]
- [ -11.   nan   nan ...,   nan   nan   nan]
- ..., 
- [-106.   nan   nan ...,   nan   nan   nan]
- [-107.   nan   nan ...,   nan   nan   nan]
- [-108.   nan   nan ...,   nan   nan   nan]]
+<pre>Vertical
+[[  0. -inf -inf -inf -inf -inf]
+ [ -1.   0.   0.   0.   0.   0.]
+ [ -2.   0.   0.   0.   0.   0.]
+ [ -3.   0.   0.   0.   0.   0.]
+ [ -4.   0.   0.   0.   0.   0.]]
+Horizontal
+[[  0.  -1.  -2.  -3.  -4.  -5.]
+ [-inf   0.   0.   0.   0.   0.]
+ [-inf   0.   0.   0.   0.   0.]
+ [-inf   0.   0.   0.   0.   0.]
+ [-inf   0.   0.   0.   0.   0.]]
+Diagonal
+[[ 0. -1. -2. -3. -4. -5.]
+ [-1.  0.  0.  0.  0.  0.]
+ [-2.  0.  0.  0.  0.  0.]
+ [-3.  0.  0.  0.  0.  0.]
+ [-4.  0.  0.  0.  0.  0.]]
+Score
+[[  0.   0.   0.   0.   0.   0.]
+ [  0.  nan  nan  nan  nan  nan]
+ [  0.  nan  nan  nan  nan  nan]
+ [  0.  nan  nan  nan  nan  nan]
+ [  0.  nan  nan  nan  nan  nan]]
+Direction
+[[  0.   2.   2.   2.   2.   2.]
+ [  1.  nan  nan  nan  nan  nan]
+ [  1.  nan  nan  nan  nan  nan]
+ [  1.  nan  nan  nan  nan  nan]
+ [  1.  nan  nan  nan  nan  nan]]
+(3, 2)
+[[ 0.  0.]
+ [ 0.  0.]
+ [ 0.  0.]]
 </pre>
 </div>
 </div>
@@ -11946,33 +12031,89 @@ seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># here we going to loop through the whole thing and go from top left to bottom right</span>
 
 
-<span class="n">check</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">seq1</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">seq2</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-	<span class="k">if</span> <span class="s1">&#39;seq&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-		<span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
-	<span class="k">elif</span> <span class="n">check</span> <span class="o">==</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-		<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-			<span class="k">if</span> <span class="n">char</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
-				<span class="n">seq1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<span class="c1">#let&#39;s make a variable to keep track of the biggest score value:</span>
+<span class="n">maxScore</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">bestLoc</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># we want to iterate 1-10 in the 3 matrices. This is the nested for loop</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">diag</span><span class="p">):</span>
+    <span class="n">j</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+        <span class="c1">#print (&#39;current i and j: &#39;, i , &#39; &#39;, j)</span>
+        <span class="c1">#we gotta manipulate each matrix we&#39;re working with</span>
+        
+        <span class="c1">#Vertical</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">vert</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">b</span><span class="p">:</span>
+            <span class="n">vert</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">mismatchScore</span>
+        <span class="k">elif</span> <span class="n">b</span><span class="o">&gt;=</span><span class="n">a</span><span class="p">:</span>
+            <span class="n">vert</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">mismatchScore</span>
+        
+        
+        <span class="c1">#Horizontal</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">hori</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">b</span><span class="p">:</span>
+            <span class="n">hori</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">mismatchScore</span>
+        <span class="k">elif</span> <span class="n">b</span><span class="o">&gt;=</span><span class="n">a</span><span class="p">:</span>
+            <span class="n">hori</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">mismatchScore</span>
+        <span class="c1">#diag</span>
+        
+        <span class="n">a</span> <span class="o">=</span> <span class="n">vert</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">hori</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        
+        <span class="c1">#print((seq1[j-1],seq2[i-1]))</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">seq1</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="n">seq2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span><span class="mi">0</span><span class="p">):</span>
+            <span class="n">cScore</span> <span class="o">=</span> <span class="n">mismatchScore</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cScore</span> <span class="o">=</span> <span class="n">matchScore</span>
 
-		<span class="n">counter</span> <span class="o">+=</span><span class="mi">1</span>
-	<span class="k">elif</span> <span class="n">check</span> <span class="o">==</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-		<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-			<span class="k">if</span> <span class="n">char</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
-				<span class="n">seq2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cScore</span>
+        
+        
+        <span class="k">if</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">b</span> <span class="ow">and</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">c</span><span class="p">:</span>
+            <span class="n">dire</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+            <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">a</span>
+        <span class="k">if</span> <span class="n">b</span><span class="o">&gt;=</span><span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&gt;=</span><span class="n">c</span><span class="p">:</span>
+            <span class="n">dire</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+            <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">b</span>
+        <span class="k">if</span> <span class="n">c</span><span class="o">&gt;=</span><span class="n">a</span> <span class="ow">and</span> <span class="n">c</span><span class="o">&gt;=</span><span class="n">b</span><span class="p">:</span>
+            <span class="n">dire</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
+            <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">c</span> 
+        <span class="k">if</span> <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">dire</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">maxScore</span><span class="p">):</span>
+            <span class="n">maxScore</span> <span class="o">=</span> <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">bestLoc</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+            
+        <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;seq1&#39;</span><span class="p">,</span> <span class="n">seq1</span><span class="p">)</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;seq2&#39;</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vertical: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vert</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;horizontal: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hori</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;diagonal: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diag</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Directional: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dire</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;best: &#39;</span><span class="p">,</span> <span class="n">maxScore</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bestLoc</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11985,12 +12126,140 @@ seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#3
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>seq1 [&#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;C&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;]
-seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;]
+<pre>vertical: 
+[[  0. -inf -inf -inf -inf -inf]
+ [ -1.  -2.  -3.  -4.  -5.  -6.]
+ [ -2.   0.  -1.  -2.  -3.  -4.]
+ [ -3.  -1.  -1.   0.  -1.  -2.]
+ [ -4.  -2.  -2.  -1.   1.   0.]]
+horizontal: 
+[[  0.  -1.  -2.  -3.  -4.  -5.]
+ [-inf  -2.   0.  -1.  -2.  -3.]
+ [-inf  -3.  -1.  -1.   0.  -1.]
+ [-inf  -4.  -2.  -2.  -1.   1.]
+ [-inf  -5.  -3.  -3.  -2.   0.]]
+diagonal: 
+[[ 0. -1. -2. -3. -4. -5.]
+ [-1.  1.  0. -1. -2. -3.]
+ [-2.  0.  0.  1.  0. -1.]
+ [-3. -1. -1.  0.  2.  1.]
+ [-4. -2. -2. -1.  1.  1.]]
+Directional: 
+[[ 0.  2.  2.  2.  2.  2.]
+ [ 1.  3.  2.  0.  0.  0.]
+ [ 1.  1.  3.  3.  2.  0.]
+ [ 1.  0.  0.  1.  3.  3.]
+ [ 1.  0.  0.  0.  1.  3.]]
+best:  2.0
+(3, 4)
 </pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># run this if -a is on</span>
+<span class="c1">#reset directional borders to zero:</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dire</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+	<span class="n">dire</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dire</span><span class="p">):</span>
+	<span class="n">dire</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">d</span><span class="o">+=</span><span class="mi">1</span>
+
+
+<span class="c1"># let&#39;s write a function to find the local alignment</span>
+
+
+<span class="n">ali1</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq1</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1">#remember seq2 is the y value but is presented first in the coordinates</span>
+<span class="n">ali2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq2</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+
+
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">current</span> <span class="o">=</span> <span class="n">bestLoc</span>
+<span class="k">while</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1">#\print (&quot;currentLoc: &quot;, bestLoc, &quot; currentDire &quot;,dire[bestLoc])</span>
+    
+    <span class="c1">#on zero we stop</span>
+    <span class="k">if</span> <span class="n">dire</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">1</span>
+    <span class="c1">#on 1 we go up. so i changes but j stays the same</span>
+    <span class="k">elif</span> <span class="n">dire</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">bestLoc</span> <span class="o">=</span> <span class="p">(</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">bestLoc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">ali1</span> <span class="o">=</span> <span class="n">ali1</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span>
+        <span class="n">ali2</span> <span class="o">=</span> <span class="n">ali2</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">seq2</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="c1">#on 2 we go left so j changes but i stays constant</span>
+    <span class="k">elif</span> <span class="n">dire</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">bestLoc</span> <span class="o">=</span> <span class="p">(</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bestLoc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ali2</span> <span class="o">=</span> <span class="n">ali2</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span>
+        <span class="n">ali1</span> <span class="o">=</span> <span class="n">ali1</span> <span class="o">=</span> <span class="n">ali1</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">seq1</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="c1">#on 3 both change, yay!</span>
+    <span class="k">elif</span> <span class="n">dire</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">bestLoc</span> <span class="o">=</span> <span class="p">(</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">bestLoc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ali1</span> <span class="o">=</span> <span class="n">ali1</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">seq1</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="n">ali2</span> <span class="o">=</span> <span class="n">ali2</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">seq2</span><span class="p">[</span><span class="n">bestLoc</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dire</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">ali1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">ali2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;]
+A
+[&#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;]
+A
+[[ 0.  0.  0.  0.  0.  0.]
+ [ 0.  3.  2.  0.  0.  0.]
+ [ 0.  1.  3.  3.  2.  0.]
+ [ 0.  0.  0.  1.  3.  3.]
+ [ 0.  0.  0.  0.  1.  3.]]
+ACGT
+AC-T
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
 </div>
 </div>
 
