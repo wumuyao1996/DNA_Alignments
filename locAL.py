@@ -3,7 +3,7 @@
 
 # 
 
-# In[76]:
+# In[2]:
 
 #python locAL.py <seq file> -m <match> -s <mismatch> -d <indel> -a
 
@@ -30,7 +30,7 @@ print ('indel:', str(indel))
 print ('findA:', str(findA))
 
 
-# In[77]:
+# In[3]:
 
 data = open(file, "r")
 
@@ -63,7 +63,7 @@ print ('seq2', seq2)
 
 
 
-# In[78]:
+# In[13]:
 
 #to find the max score
 
@@ -138,6 +138,7 @@ d=1
 while d < len(dire):
 	dire[d][0] = 1
 	d+=1
+    
 print ("Vertical")
 print (vert)
 
@@ -161,13 +162,15 @@ print (x3)
 #run the script until we good
 
 
-# In[83]:
+# In[50]:
 
-#here we going to loop through the whole thing and go from top left to bottom right
+# here we going to loop through the whole thing and go from top left to bottom right
 
 
-
-# we want to iterate 1-10 in the 3 matrices.
+#let's make a variable to keep track of the biggest score value:
+maxScore = 0
+bestLoc = (0,0)
+# we want to iterate 1-10 in the 3 matrices. This is the nested for loop
 i = 1
 while i < len(diag):
     j=1
@@ -198,7 +201,7 @@ while i < len(diag):
         a = vert[i][j]
         b = hori[i][j]
         
-        print((seq1[j-1],seq2[i-1]))
+        #print((seq1[j-1],seq2[i-1]))
         
         if(int(seq1[j-1]==seq2[i-1]) ==0):
             cScore = mismatchScore
@@ -207,18 +210,22 @@ while i < len(diag):
 
         c = diag[i-1][j-1] + cScore
         
+        
         if a>=b and a>=c:
             dire[i][j] = "1"
-            print("a")
             diag[i][j]=a
         if b>=a and b>=c:
             dire[i][j] = "2"
-            print("b")
             diag[i][j]=b
         if c>=a and c>=b:
             dire[i][j] = "3"
-            print("c")
             diag[i][j]=c 
+        if diag[i][j]<0:
+            dire[i][j] = 0
+        
+        if(diag[i][j] >= maxScore):
+            maxScore = diag[i][j]
+            bestLoc = (i,j)
             
         j+=1
 
@@ -234,7 +241,61 @@ print(diag)
 print('Directional: ')
 print(dire)
 
-      
+
+print('best: ', maxScore)
+print(bestLoc)
+
+
+# In[51]:
+
+#reset directional borders to zero:
+d=1
+while d < len(dire[0]):
+	dire[0][d] = 0
+	d+=1
+d=1
+while d < len(dire):
+	dire[d][0] = 0
+	d+=1
+
+
+# let's write a function to find the local alignment
+
+
+ali2 = ""
+print(seq2)
+print(seq2[bestLoc[0]-1])
+
+
+ali1 = ""
+print(seq1)
+print(seq1[bestLoc[1]-1])
+
+
+
+k = 0
+current = bestLoc
+while k == 0:
+    ali1 = ali1 + str(seq2[bestLoc[0]])
+    ali2 = ali2 + str(seq1[bestLoc[1]])
+    print ("currentLoc: ", bestLoc, " currentDire ",dire[bestLoc])
+    
+    #on zero we stop
+    if dire[bestLoc] == 0:
+        k=1
+    #on 1 we go up. so i changes but j stays the same
+    elif dire[bestLoc] == 1:
+        bestLoc = (bestLoc[0]-1, bestLoc[1])
+    #on 2 we go left so j changes but i stays constant
+    elif dire[bestLoc] == 2:
+        bestLoc = (bestLoc[0], bestLoc[1]-1)
+    #on 3 both change, yay!
+    elif dire[bestLoc] == 3:
+        bestLoc = (bestLoc[0]-1, bestLoc[1]-1)
+
+print(dire)
+print (ali2)
+print (ali1)
 
 
 # In[ ]:
