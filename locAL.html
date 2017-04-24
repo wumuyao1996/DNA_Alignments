@@ -11757,7 +11757,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[157]:</div>
+<div class="prompt input_prompt">In&nbsp;[158]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#python locAL.py &lt;seq file&gt; -m &lt;match&gt; -s &lt;mismatch&gt; -d &lt;indel&gt; -a</span>
@@ -11813,7 +11813,7 @@ findA: True
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[146]:</div>
+<div class="prompt input_prompt">In&nbsp;[159]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
@@ -11877,7 +11877,7 @@ seq2 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[147]:</div>
+<div class="prompt input_prompt">In&nbsp;[160]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#to find the max score</span>
@@ -12020,13 +12020,13 @@ Score
  [  0.  nan  nan ...,  nan  nan  nan]
  [  0.  nan  nan ...,  nan  nan  nan]]
 Direction
-[[  0.   2.   2. ...,   2.   2.   2.]
- [  1.  nan  nan ...,  nan  nan  nan]
- [  1.  nan  nan ...,  nan  nan  nan]
+[[ 0.  2.  2. ...,  2.  2.  2.]
+ [ 1.  0.  0. ...,  0.  0.  0.]
+ [ 1.  0.  0. ...,  0.  0.  0.]
  ..., 
- [  1.  nan  nan ...,  nan  nan  nan]
- [  1.  nan  nan ...,  nan  nan  nan]
- [  1.  nan  nan ...,  nan  nan  nan]]
+ [ 1.  0.  0. ...,  0.  0.  0.]
+ [ 1.  0.  0. ...,  0.  0.  0.]
+ [ 1.  0.  0. ...,  0.  0.  0.]]
 (3, 2)
 [[ 0.  2.]
  [ 2.  2.]
@@ -12041,7 +12041,7 @@ Direction
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[155]:</div>
+<div class="prompt input_prompt">In&nbsp;[161]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># here we going to loop through the whole thing and go from top left to bottom right</span>
@@ -12063,9 +12063,9 @@ Direction
         <span class="n">b</span> <span class="o">=</span> <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
         
         <span class="k">if</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">b</span><span class="p">:</span>
-            <span class="n">vert</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">mismatchScore</span>
+            <span class="n">vert</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">indel</span>
         <span class="k">elif</span> <span class="n">b</span><span class="o">&gt;=</span><span class="n">a</span><span class="p">:</span>
-            <span class="n">vert</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">mismatchScore</span>
+            <span class="n">vert</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">indel</span>
         
         
         <span class="c1">#Horizontal</span>
@@ -12073,9 +12073,9 @@ Direction
         <span class="n">b</span> <span class="o">=</span> <span class="n">diag</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         
         <span class="k">if</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">b</span><span class="p">:</span>
-            <span class="n">hori</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">mismatchScore</span>
+            <span class="n">hori</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">indel</span>
         <span class="k">elif</span> <span class="n">b</span><span class="o">&gt;=</span><span class="n">a</span><span class="p">:</span>
-            <span class="n">hori</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">mismatchScore</span>
+            <span class="n">hori</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">indel</span>
 
         <span class="c1">#diag</span>
         
@@ -12148,35 +12148,35 @@ Direction
  [   -1.     0.     0. ...,     0.     0.     0.]
  [   -2.     0.     0. ...,     0.     0.     0.]
  ..., 
- [ -998.     0.     0. ...,     0.     0.     0.]
- [ -999.     0.     0. ...,     0.     0.     0.]
- [-1000.     0.     0. ...,     0.     0.     0.]]
+ [ -998.     0.     0. ...,   108.   110.   109.]
+ [ -999.     0.     0. ...,   107.   109.   111.]
+ [-1000.     0.     0. ...,   109.   108.   110.]]
 horizontal: 
 [[    0.    -1.    -2. ...,  -998.  -999. -1000.]
  [  -inf     0.     0. ...,     0.     0.     0.]
  [  -inf     0.     0. ...,     0.     0.     0.]
  ..., 
- [  -inf     0.     0. ...,     0.     0.     0.]
- [  -inf     0.     0. ...,     0.     0.     0.]
- [  -inf     0.     0. ...,     0.     0.     0.]]
+ [  -inf     0.     0. ...,   108.   107.   109.]
+ [  -inf     0.     0. ...,   107.   109.   108.]
+ [  -inf     0.     0. ...,   109.   108.   107.]]
 diagonal: 
 [[    0.    -1.    -2. ...,  -998.  -999. -1000.]
  [   -1.     1.     0. ...,     0.     0.     0.]
  [   -2.     0.     2. ...,     0.     1.     0.]
  ..., 
- [ -998.     0.     0. ...,     0.     0.     3.]
- [ -999.     0.     0. ...,     1.     0.     0.]
- [-1000.     0.     0. ...,     0.     0.     1.]]
+ [ -998.     0.     0. ...,   108.   110.   112.]
+ [ -999.     0.     0. ...,   110.   109.   111.]
+ [-1000.     0.     0. ...,   109.   108.   110.]]
 Directional: 
-[[ 0.  0.  0. ...,  0.  0.  0.]
- [ 0.  3.  2. ...,  2.  2.  2.]
- [ 0.  2.  3. ...,  2.  3.  2.]
+[[ 0.  2.  2. ...,  2.  2.  2.]
+ [ 1.  3.  2. ...,  2.  2.  2.]
+ [ 1.  2.  3. ...,  2.  3.  2.]
  ..., 
- [ 0.  2.  2. ...,  2.  2.  3.]
- [ 0.  2.  2. ...,  3.  2.  2.]
- [ 0.  2.  2. ...,  2.  2.  3.]]
-best:  33.0
-(936, 111)
+ [ 1.  2.  2. ...,  2.  1.  3.]
+ [ 1.  2.  2. ...,  3.  2.  1.]
+ [ 1.  2.  2. ...,  2.  2.  3.]]
+best:  119.0
+(986, 993)
 </pre>
 </div>
 </div>
@@ -12187,7 +12187,7 @@ best:  33.0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[156]:</div>
+<div class="prompt input_prompt">In&nbsp;[162]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># run this if -a is on</span>
@@ -12262,16 +12262,16 @@ best:  33.0
 A
 [&#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;T&#39;, &#39;T&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;T&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;G&#39;, &#39;T&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;T&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;C&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;G&#39;, &#39;G&#39;, &#39;G&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;G&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;T&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;A&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;A&#39;, &#39;T&#39;, &#39;T&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;A&#39;, &#39;G&#39;, &#39;C&#39;, &#39;A&#39;, &#39;C&#39;]
 A
-stopped at:  (886, 0)
+stopped at:  (0, 0)
 [[ 0.  0.  0. ...,  0.  0.  0.]
  [ 0.  3.  2. ...,  2.  2.  2.]
  [ 0.  2.  3. ...,  2.  3.  2.]
  ..., 
- [ 0.  2.  2. ...,  2.  2.  3.]
- [ 0.  2.  2. ...,  3.  2.  2.]
+ [ 0.  2.  2. ...,  2.  1.  3.]
+ [ 0.  2.  2. ...,  3.  2.  1.]
  [ 0.  2.  2. ...,  2.  2.  3.]]
-AGCCCACAATATAGCTAAACATCGCCACTAGTCCTAAAACCACTCCGCAGAAAAAGAATAAGGCCAAAACACGACTAAAATCGAAAGACATGACAAGTAAACGAGAAAAGA
--G----------AG------A-----AC--G----------ACT--GC-------------GG-------A-G--T--AATCGAAAGACATGACAAGTAAACGAGAAAAGA
+AGCCCACAATATA-GCT-AAACATCGC-CACTAGTCCTA-AAACCACTCC----GCAGAA--AAAG--AATA--AG--GCCAAAACACGACTAAAATCGAAAGAC-ATGACAAGTAAACGAGAAAAGAAA-A-ATA-AA-CGACATACACACTTGTAGGA--A-A--A-ATAA-GAAA-A-AGGGGGAGACGAAGCAAAGA-AAGGGCAGCTAACCCT-CA-A---GGA-AGAACCAGACA-GAATAAGA--A-AA---ACCCGAAA-GCCACC-AAA-TGAAA-G-GAC-AATAACACCTAA-GAGCAA--AAT--CAATAA--A--A-CACCGATCCTC-----C---GAGGAT-AACCA-AGA-GAGACCTAAGAACGAC-A--AG-AAACCAATG--A--A-A-GA-AA--AAG---AA-A--ATGGA-CATCAGAACGA-CTTAGAA-TGCTGGGAA-AA-AGAAAAATT------ATAAACGAA-G-G-A-TG-G---G--CATAAATTG-G--AC-GAAG-C-C-A-AGAGATAG-GC-CGA--G--ATAAAACGGAGAACAATAAG--GGAGAC-C--AT-G-GAGAGC--AAAC--CAACCGCAA-CAAA--TAA-A-GGGGGGGACAAA-AACAAGACCAAC--CC-AAA-C-TGT-CA-G----A-CA-G-GA-A-GAGC-AATAAC--CAAGACA-GAA-GAA-G-AAACAGGA--GACAAACA-AC--AT--AA-TA--TA-AGA-GCA-CCTAGCTAACAAAAAAGA---CCAGCAAACGGATTAAGA-AGAT--AAAGAAA----AC---G--T----AA-AGAA-C-A-GTC-AAG---GAACAAGCGA----TAATAA-ATG-CAGG-G-AAAAAATGG-G--GA-CAG-ACGAAG--GAAACAACCA-G-AAATAATCTA-ACGCATCGCAGAAGATGACACTGCGA--GAA-AATACGAGCCGT-ATACGACAC-A-AAAC--C--G--GGAA-TAA-A-GA-AA---AAAACCATACC-CAA-AA-AGA-ACA-AC-GCGA-AAGATGAAACGCTCC--C-AAC--TC-G----G-A---TGAG-CAAAGCCGCCAG--GCCAAAA-AAGAGAACCA--GAGC-AG-AGCGA--AGCTATGG-GT-A--GAAA-AC---ACCCTAAGCGCGGGTAGTAGA-GACGAAAA-A-TAA-AAAC-AGGC-TGAC-C-CGAACATAAGAGCCCACACAAGTAGAAGAACGGAAAGAAAACGAAAAGA
+AG-------TA-AGGCTG---CA--GCA-A--A--CC-AGAAACCA-TCCTAAA--AGAAGGAAAGCAAATAGGAGAA--CAAAACA--A-T--AATC-AAAG-CGAT----A-TAAA-G-G---AGAAACATA-ACAACCG-C-TACAC-C----A--ATCACACCACA-AAGGAAAGATA-----AG-C---GCAAAGAG-A----AG-T-ACCCTGCATACCT--AC--AACCA-A-AT-AA-AAGAGGAGAACTGA---GAAACGCCACCAAAAC--AAACGTGACG-AT-A-A-CTAATGA--AACGAATGA-AA-AAGGAGGAT-A--GA-CCTCAAATTCAAAGA-GATGAA-CAT-GAC-AG--CTAA-AA-GACAACGAGCAAA--AATGCTAGGAGAC-ATAACCAAGCTAAAGACCA-GGACC--C--AACGACC---GAAC-GC----AAGAAT-G-AAAATTAGCCCCA-AAA--AACGCGCAC-GAGAAAGAAC-TAAA--GAGCCACA-AAGACACAATAGA-A-AGTGCTCGACGGACA-AAAA---A-AA-AA-AAGAA-GAGACACAAATAGA-A-A-CAAAAACAA-AA--G-AAGCAAACG-AATAT------GACAAAG-A-AA-ACCAACTACCAAAAGCA-GTACATGACACATCATGC-ACAC-AGCGAA-AACAACAA-A-ATGAAC-AACGAAAACA--ACC-A-AAA-AGACGAATCGAAC-AGG-AGAGAGG-ATCC---C---CAAAAAAGAGGGCC--C-AAC----TAAGACA-ATGCAAAGAAACGCGACAAAGCCTCGCCAACAGAATCAAC--CAAAGCATGAAC-AGC-ACTTTTAA-AACATGT--GGCGC-------GGCGTCGAGCAGTACG--GTT----CAA--ATGCAAA-AAT-TACA---A----A-AA-A-GACA-TGC-ACTGAAC----C---CCGTAA-A-GA-ACGAGAAACTTCAAGAAGGAAG-AAGAC-ATAAGCCAAAA--A-ACCA-AATAATAGACACAG-CT-CGAG-A-A--AAA-GC-CCAACAAACGA-CAGAAAAGAAGGG-GAGT--AAG--G--AGAAG-CAAAAC---AGAA-CAGGG-GCGAGAA-CGACT-GC---GGAGTAATCGAAAGACATGA--C-AA------GTA--A-ACGA-GAAAAGATTAATAAACGA--CAT-ACACA--AAC--AA-A----A-ACAA-TAG-A-AAC-GAAA-AAAA--AAAA-A
 </pre>
 </div>
 </div>

@@ -3,7 +3,7 @@
 
 # 
 
-# In[145]:
+# In[158]:
 
 #python locAL.py <seq file> -m <match> -s <mismatch> -d <indel> -a
 #python locAL.py testseqs.txt -m +1 -s -1 -d -1 -a
@@ -31,7 +31,7 @@ print ('indel:', str(indel))
 print ('findA:', str(findA))
 
 
-# In[146]:
+# In[159]:
 
 data = open(file, "r")
 
@@ -64,7 +64,7 @@ print ('seq2', seq2)
 
 
 
-# In[147]:
+# In[160]:
 
 #to find the max score
 
@@ -163,7 +163,7 @@ print (x3)
 #run the script until we good
 
 
-# In[155]:
+# In[161]:
 
 # here we going to loop through the whole thing and go from top left to bottom right
 
@@ -184,9 +184,9 @@ while i < len(diag):
         b = diag[i-1][j]
         
         if a>=b:
-            vert[i][j] = a + mismatchScore
+            vert[i][j] = a + indel
         elif b>=a:
-            vert[i][j] = b + mismatchScore
+            vert[i][j] = b + indel
         
         
         #Horizontal
@@ -194,9 +194,9 @@ while i < len(diag):
         b = diag[i][j-1]
         
         if a>=b:
-            hori[i][j] = a + mismatchScore
+            hori[i][j] = a + indel
         elif b>=a:
-            hori[i][j] = b + mismatchScore
+            hori[i][j] = b + indel
 
         #diag
         
@@ -254,7 +254,7 @@ print('best: ', maxScore)
 print(bestLoc)
 
 
-# In[156]:
+# In[162]:
 
 # run this if -a is on
 #reset directional borders to zero:
